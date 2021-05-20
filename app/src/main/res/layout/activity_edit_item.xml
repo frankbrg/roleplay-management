@@ -26,7 +26,7 @@
         android:id="@+id/itemName"
         android:layout_width="328dp"
         android:layout_height="56dp"
-        android:hint="Item Name"
+        android:hint="item name"
         android:translationX="33dp"
         android:translationY="108dp" />
 
@@ -35,7 +35,7 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:ems="10"
-        android:hint="Item weight"
+        android:hint="max weight"
         android:inputType="number"
         android:translationX="33dp"
         android:translationY="206dp" />
