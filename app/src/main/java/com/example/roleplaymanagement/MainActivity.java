@@ -12,10 +12,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_edit_character);
 
         Character character = new Character("fisty", 152);
 
         System.out.println(character);
+
+        setContentView(R.layout.activity_add_character);
+
     }
 }
