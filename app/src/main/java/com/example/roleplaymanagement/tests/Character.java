@@ -7,6 +7,6 @@ public class Character {
     public Character(String name, int age){
         this.name = name;
         this.age = age;
-    }y
+    }
 
 }

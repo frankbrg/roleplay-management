@@ -12,8 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Character"
+        android:textSize="20dp"
         android:translationX="33dp"
-        android:translationY="138dp" />
+        android:translationY="51dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -22,38 +23,46 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/itemName"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:hint="character name"
         android:translationX="33dp"
-        android:translationY="195dp" />
+        android:translationY="108dp" />
 
     <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/itemWeight"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
         android:ems="10"
         android:hint="max weight"
         android:inputType="number"
         android:translationX="33dp"
-        android:translationY="293dp" />
+        android:translationY="206dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
+        android:textColor="@color/black"
         android:translationX="33dp"
-        android:translationY="382dp"
+        android:translationY="295dp"
         app:backgroundTint="#F84141"
-        app:cornerRadius="50dp" />
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_action_delete"
+        app:iconTint="#000000" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
+        android:textColor="#000000"
         android:translationX="241dp"
-        android:translationY="382dp"
-        app:cornerRadius="50dp" />
+        android:translationY="295dp"
+        app:backgroundTint="#69E5FC"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_action_edit"
+        app:iconTint="#000000" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
