@@ -76,5 +76,7 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
     public int getItemCount() {
         return localDataSet.size();
     }
+
+    public interface
 }
 
