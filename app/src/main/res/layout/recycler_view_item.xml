@@ -54,7 +54,10 @@
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
             android:src="@drawable/ic_baseline_settings_24"
-            android:tint="#000000" />
+            android:tint="#000000"
+            android:onClick=""
+        />
+
 
       </LinearLayout>
 

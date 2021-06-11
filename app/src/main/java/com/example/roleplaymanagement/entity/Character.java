@@ -3,15 +3,24 @@ package com.example.roleplaymanagement.entity;
 import java.util.ArrayList;
 
 public class Character {
+    private int id;
     private String name;
     private int inventorySize;
     private int inventoryUsedSize;
     private ArrayList<Item> items;
 
-    public Character(String name, int inventorySize) {
+    public Character(int id, String name, int inventorySize) {
+        this.id = id;
         this.name = name;
         this.inventorySize = inventorySize;
         this.items = new ArrayList<>();
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
