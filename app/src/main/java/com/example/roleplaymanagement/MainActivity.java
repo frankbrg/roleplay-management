@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         Character character = new Character("fisty", 152);
 
         System.out.println(character);
