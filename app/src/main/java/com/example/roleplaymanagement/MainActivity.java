@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-
-        setContentView(R.layout.activity_edit_character);
-
         Character character = new Character("fisty", 152);
 
         System.out.println(character);
