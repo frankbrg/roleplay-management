@@ -19,7 +19,6 @@
         app:srcCompat="@drawable/ic_baseline_add_24"
         tools:ignore="VectorDrawableCompat" />
 
-
     <TextView
         android:id="@+id/inventoryLabel"
         android:layout_width="0dp"
@@ -28,7 +27,8 @@
         android:layout_marginLeft="24dp"
         android:text="Inventory of divine Elf : "
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/inventoryLabel"
-        tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
