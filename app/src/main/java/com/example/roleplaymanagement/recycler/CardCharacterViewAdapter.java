@@ -13,14 +13,14 @@ import com.example.roleplaymanagement.entity.Character;
 import java.util.ArrayList;
 
 public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacterViewAdapter.ViewHolder> {
-
+    private ItemClickListener mClickListener;
     private ArrayList<Character> localDataSet;
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView textView;
         private final TextView inventory;
 
@@ -38,6 +38,10 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
             return inventory;
         }
 
+        @Override
+        public void onClick(View v) {
+            if(mClickListener != null) mClicklistener.onItemClick(v, getAdapterPosition());
+        }
     }
 
     /**
@@ -77,6 +81,11 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
         return localDataSet.size();
     }
 
-    public interface
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+    public interface ItemClickListener{
+        void onItemClick(View view, int position);
+    }
 }
 
