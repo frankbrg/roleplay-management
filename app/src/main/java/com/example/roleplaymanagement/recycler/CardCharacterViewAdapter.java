@@ -3,6 +3,8 @@ package com.example.roleplaymanagement.recycler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,7 @@ import com.example.roleplaymanagement.R;
 import com.example.roleplaymanagement.entity.Character;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacterViewAdapter.ViewHolder> {
     private ItemClickListener mClickListener;
@@ -20,16 +23,18 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView textView;
         private final TextView inventory;
-
+        private final ImageButton editButton;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
 
             textView = (TextView) view.findViewById(R.id.name);
             inventory = (TextView) view.findViewById(R.id.inventory);
+            editButton=(ImageButton) view.findViewById(R.id.imageButton);
+            editButton.setOnClickListener(this);
         }
         public TextView getTextView() {
             return textView;
@@ -40,7 +45,7 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
 
         @Override
         public void onClick(View v) {
-            if(mClickListener != null) mClicklistener.onItemClick(v, getAdapterPosition());
+            if(mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
         }
     }
 
@@ -75,6 +80,11 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
 
     }
 
+    // convenience method for getting data at click position
+    public Character getItem(int id) {
+        return localDataSet.get(id);
+    }
+
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
@@ -84,8 +94,10 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
+
     public interface ItemClickListener{
         void onItemClick(View view, int position);
     }
+
 }
 

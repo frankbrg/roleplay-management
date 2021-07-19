@@ -5,8 +5,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.roleplaymanagement.entity.Character;
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
 
         setContentView(R.layout.activity_edit_character);
 
-        Character character = new Character(0,"fisty", 152);
+        Character character = new Character("fisty", 152);
 
         System.out.println(character);
 
@@ -58,13 +61,15 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new CardCharacterViewAdapter(characters);
         adapter.setClickListener(this);
-        adapter.setEditClickListener(this);
+        //adapter.setEditClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, EditCharacterActivity.class);
+        intent.putExtra("character",adapter.getItem(position));
+        startActivity(intent);
     }
 
 }
