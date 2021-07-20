@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roleplaymanagement.R;
@@ -27,6 +28,7 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
         private final TextView textView;
         private final TextView inventory;
         private final ImageButton editButton;
+        private final CardView cardCharacter;
 
         public ViewHolder(View view) {
             super(view);
@@ -35,7 +37,10 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
             textView = (TextView) view.findViewById(R.id.name);
             inventory = (TextView) view.findViewById(R.id.inventory);
             editButton=(ImageButton) view.findViewById(R.id.imageButton);
+            cardCharacter = (CardView) view.findViewById(R.id.cardCharacter);
             editButton.setOnClickListener(this);
+            cardCharacter.setOnClickListener(this);
+
         }
         public TextView getTextView() {
             return textView;
@@ -46,7 +51,11 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
 
         @Override
         public void onClick(View v) {
-            if(mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
+            if (v.getId() == R.id.cardCharacter) {
+                if(mClickListener != null) mClickListener.onCardClick(v, getAdapterPosition());
+            } else if (v.getId() == R.id.imageButton) {
+                if(mClickListener != null) mClickListener.onItemClick(v, getAdapterPosition());
+            }
         }
     }
 
@@ -98,6 +107,7 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
 
     public interface ItemClickListener{
         void onItemClick(View view, int position);
+        void onCardClick(View view, int position);
     }
 
 }

@@ -1,6 +1,6 @@
 package com.example.roleplaymanagement.entity;
 
-public class Item {
+public class Item implements java.io.Serializable{
 
     private String name;
     private int weight;
