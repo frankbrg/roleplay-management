@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
 
     private Button button;
 
+
     ArrayList<Character> characters = new ArrayList<>();
     CardCharacterViewAdapter adapter;
 
@@ -39,8 +40,9 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ActivityAddCharacter.class);
-                startActivity(intent);
-                        }
+                startActivityForResult(intent, 2);
+
+            }
         });
 
         // data to populate the RecyclerView with
@@ -129,6 +131,12 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
             }
             if (resultCode == Activity.RESULT_CANCELED) {
 
+            }
+        }
+        if (requestCode == 2) {
+            if(resultCode == Activity.RESULT_OK) {
+                Character character = (Character) data.getSerializableExtra("character");
+                characters.add(character);
             }
         }
     }
