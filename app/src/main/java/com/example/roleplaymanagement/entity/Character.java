@@ -23,6 +23,10 @@ public class Character implements java.io.Serializable{
         this.name = name;
     }
 
+    public void setInventorySize(int inventorySize) {
+        this.inventorySize = inventorySize;
+    }
+
     public int getInventorySize() {
         return inventorySize;
     }
