@@ -26,28 +26,21 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
     private Button button;
 
 
-    CardItemViewAdapter adapter;
+    CardCharacterViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         FloatingActionButton button = findViewById(R.id.floatingActionButton);
-        System.out.println(button);
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ActivityAddCharacter.class);
                 startActivity(intent);
                         }
         });
-
-        Character character = new Character("fisty", 152);
-
-        System.out.println(character);
-
 
         // data to populate the RecyclerView with
         ArrayList<Character> characters = new ArrayList<>();
@@ -66,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         characters.add(new Character("Gandalf", 40));
         characters.add(new Character("Dylan", 10));
         characters.add(new Character("Florian", 17));
+        characters.add(new Character("Frank", 14));
         characters.add(new Character("Frank", 14));
 
 
@@ -92,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         );
 
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.rvItems);
+        RecyclerView recyclerView = findViewById(R.id.rvCharacters);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         //adapter = new CardItemViewAdapter(items);
