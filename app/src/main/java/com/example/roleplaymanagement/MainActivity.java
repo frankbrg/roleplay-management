@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.Button;
 
 import com.example.roleplaymanagement.entity.Character;
@@ -16,7 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements CardCharacterViewAdapter.ItemClickListener{
 
     private Button button;
 
@@ -28,18 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //setContentView(R.layout.activity_edit_character);
-
-       /* button = (Button) findViewById(R.id.floatingActionButton);
-
-        button.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                openActivity_add_character();
-            }
-        });*/
-
         FloatingActionButton button = findViewById(R.id.floatingActionButton);
         System.out.println(button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                         }
         });
-
 
         Character character = new Character("fisty", 152);
 
@@ -80,7 +70,16 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvCharacters);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new CardCharacterViewAdapter(characters);
+        adapter.setClickListener(this);
+        //adapter.setEditClickListener(this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Intent intent = new Intent(this, EditCharacterActivity.class);
+        intent.putExtra("character",adapter.getItem(position));
+        startActivity(intent);
     }
 
 }
