@@ -1,5 +1,7 @@
 package com.example.roleplaymanagement.entity;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class Character {
