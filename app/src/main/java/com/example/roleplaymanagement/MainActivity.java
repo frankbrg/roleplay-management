@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
 
     private Button button;
 
-
+    ArrayList<Character> characters = new ArrayList<>();
     CardCharacterViewAdapter adapter;
 
     @Override
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         });
 
         // data to populate the RecyclerView with
-        ArrayList<Character> characters = new ArrayList<>();
+
         characters.add(new Character("Gandalf", 40));
         characters.add(new Character("Dylan", 10));
         characters.add(new Character("Florian", 17));
@@ -101,7 +102,35 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
     public void onItemClick(View view, int position) {
         Intent intent = new Intent(this, EditCharacterActivity.class);
         intent.putExtra("character",adapter.getItem(position));
-        startActivity(intent);
+        intent.putExtra("position",position);
+        startActivityForResult(intent, 1);
+
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                if(data.getBooleanExtra("delete", false)==true) {
+                    characters.remove(data.getIntExtra("position", 0));
+                    adapter.notifyDataSetChanged();
+                }
+                else{
+                    Character character = (Character) data.getSerializableExtra("character");
+                    int position = data.getIntExtra("position", 0);
+                    characters.get(position).setName(character.getName());
+                    characters.get(position).setInventorySize(character.getInventorySize());
+                    adapter.notifyDataSetChanged();
+
+                }
+
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+
+            }
+        }
     }
 
 }
