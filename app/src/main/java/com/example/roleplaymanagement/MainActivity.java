@@ -104,4 +104,12 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         startActivity(intent);
     }
 
+    @Override
+    public void onCardClick(View view, int position) {
+        Intent intent = new Intent(this, ItemActivity.class);
+        intent.putExtra("character",adapter.getItem(position));
+        startActivity(intent);
+    }
+
+
 }

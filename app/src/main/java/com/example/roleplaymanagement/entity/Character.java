@@ -27,12 +27,14 @@ public class Character implements java.io.Serializable{
         return inventorySize;
     }
 
-    public void setInventorySize(int inventorySize) {
-        this.inventorySize = inventorySize;
-    }
-
-
     public int getInventoryUsedSize() {
+        int inventoryUsedSize = 0;
+
+        for (int i = 0; i < items.size(); i++) {
+            int weight = items.get(i).getWeight();
+            inventoryUsedSize += weight;
+        }
+
         return inventoryUsedSize;
     }
 
@@ -40,8 +42,15 @@ public class Character implements java.io.Serializable{
         this.inventoryUsedSize = inventoryUsedSize;
     }
 
-    public void addItem(Item item) {
+    public int addItem(Item item) {
+
+        if (getInventoryUsedSize() > getInventorySize())
+        {
+            return 0;
+        }
+
         this.items.add(item);
+        return 1;
     }
 
     public ArrayList<Item> getItems() {
