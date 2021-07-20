@@ -24,7 +24,9 @@ import com.example.roleplaymanagement.entity.Character;
 import com.example.roleplaymanagement.recycler.CardCharacterViewAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,15 +66,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         String json = readFromFile(MainActivity.this);
-        ArrayList<Character> jsonCharacters = new ArrayList<>();
 
-        characters = new Gson().fromJson(json, Character.class);
-
+        Type gsonCharacters = new TypeToken<List<Character>>(){}.getType();
+        characters = new Gson().fromJson(json, gsonCharacters);
+        System.out.println(characters);
         //setContentView(R.layout.activity_add_character);
 
 
         // data to populate the RecyclerView with
-        characters = new ArrayList<>();
+        /*characters = new ArrayList<>();
         characters.add(new Character("Gandalf", 40));
         characters.add(new Character("Dylan", 10));
         characters.add(new Character("Florian", 17));
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         characters.add(new Character("Dylan", 10));
         characters.add(new Character("Florian", 17));
         characters.add(new Character("Frank", 14));
+        */
 
         //Lire le Json
         //fromString() --> ArrayList<Character>
