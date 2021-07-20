@@ -41,7 +41,7 @@
         android:translationY="206dp" />
 
     <Button
-        android:id="@+id/deleteButton"
+        android:id="@+id/deleteCharacter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
@@ -54,7 +54,7 @@
         app:iconTint="#000000" />
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/editCharacter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"

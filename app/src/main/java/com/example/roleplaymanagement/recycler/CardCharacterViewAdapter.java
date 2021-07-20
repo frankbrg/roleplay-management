@@ -29,6 +29,7 @@ public class CardCharacterViewAdapter extends RecyclerView.Adapter<CardCharacter
         private final TextView inventory;
         private final ImageButton editButton;
         private final CardView cardCharacter;
+
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
