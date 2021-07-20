@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoleplayManagement">
-        <activity android:name=".EditCharacterActivity"></activity>
-        <activity android:name=".ItemActivity"></activity>
-        <activity android:name=".ActivityAddCharacter"></activity>
+        <activity android:name=".AddItem"></activity>
+        <activity android:name=".EditCharacterActivity" />
+        <activity android:name=".ItemActivity" />
+        <activity android:name=".ActivityAddCharacter" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

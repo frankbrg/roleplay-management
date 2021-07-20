@@ -51,38 +51,16 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
         characters.add(new Character("Dylan", 10));
         characters.add(new Character("Florian", 17));
         characters.add(new Character("Frank", 14));
-        characters.add(new Character("Gandalf", 40));
-        characters.add(new Character("Dylan", 10));
-        characters.add(new Character("Florian", 17));
-        characters.add(new Character("Frank", 14));
-        characters.add(new Character("Gandalf", 40));
-        characters.add(new Character("Dylan", 10));
-        characters.add(new Character("Florian", 17));
-        characters.add(new Character("Frank", 14));
-        characters.add(new Character("Gandalf", 40));
-        characters.add(new Character("Dylan", 10));
-        characters.add(new Character("Florian", 17));
-        characters.add(new Character("Frank", 14));
-        characters.add(new Character("Frank", 14));
+
 
 
         ArrayList<Item> items = new ArrayList<>();
         items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
-        items.add(new Item("Sword", 7));
+        items.add(new Item("Axe", 10));
+        items.add(new Item("Arrow", 3));
+        items.add(new Item("Bow", 5));
+
+
 
         characters.get(0).setItems(
                 items
@@ -137,6 +115,14 @@ public class MainActivity extends AppCompatActivity implements CardCharacterView
             if(resultCode == Activity.RESULT_OK) {
                 Character character = (Character) data.getSerializableExtra("character");
                 characters.add(character);
+            }
+        }
+        if (requestCode == 12) {
+            if (resultCode == Activity.RESULT_OK) {
+                ArrayList<Item> items = (ArrayList<Item>) data.getSerializableExtra("inventory");
+                int position =  data.getIntExtra("position",0);
+
+                characters.get(position).setItems(items);
             }
         }
     }

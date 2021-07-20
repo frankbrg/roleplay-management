@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class CardItemViewAdapter extends RecyclerView.Adapter<CardItemViewAdapter.ViewHolder> {
 
     private ArrayList<Item> localDataSet;
+    private int position;
 
     /**
      * Provide a reference to the type of views that you are using
@@ -23,6 +24,7 @@ public class CardItemViewAdapter extends RecyclerView.Adapter<CardItemViewAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
         private final TextView weight;
+
 
         public ViewHolder(View view) {
             super(view);
@@ -66,6 +68,7 @@ public class CardItemViewAdapter extends RecyclerView.Adapter<CardItemViewAdapte
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+        this.position = position;
         viewHolder.getTextView().setText(localDataSet.get(position).getName());
         viewHolder.getWeight().setText(String.valueOf(localDataSet.get(position).getWeight()));
 
@@ -76,5 +79,16 @@ public class CardItemViewAdapter extends RecyclerView.Adapter<CardItemViewAdapte
     public int getItemCount() {
         return localDataSet.size();
     }
+
+
+    public int getPosition() {
+        return position;
+    }
+
+    public ArrayList<Item> getItem() {
+        return localDataSet;
+    }
+
+
 }
 
